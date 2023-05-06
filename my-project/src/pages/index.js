@@ -1,9 +1,10 @@
 import React from "react";
-import CardItem from "@/components/Card/card-item";
+import Cards from "@/components/Card/cards";
+import { dataDummies } from "@/data-dummies";
 
 export default function Pageindonesia() {
   return (
-    <div>
+    <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="https://flowbite.com/" className="flex items-center">
@@ -85,7 +86,10 @@ export default function Pageindonesia() {
           </div>
         </div>
       </nav>
-      <CardItem />
-    </div>
+      <Cards
+        className='grid grid-cols sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center'
+        newsFeed={dataDummies}
+      />
+    </>
   );
 }
