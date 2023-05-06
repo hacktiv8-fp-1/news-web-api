@@ -1,7 +1,6 @@
 import React from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import { Container } from "postcss";
 import News from "@/components/News/news";
 
 export default function Pageindonesia() {
