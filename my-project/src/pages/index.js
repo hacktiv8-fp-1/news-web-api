@@ -1,6 +1,5 @@
 import React from "react";
-import Cards from "@/components/Card/cards";
-import { dataDummies } from "@/data-dummies";
+import News from "@/components/News/news";
 
 export default function Pageindonesia() {
   return (
@@ -86,10 +85,7 @@ export default function Pageindonesia() {
           </div>
         </div>
       </nav>
-      <Cards
-        className='grid grid-cols sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center'
-        newsFeed={dataDummies}
-      />
+      <News />
     </>
   );
 }
