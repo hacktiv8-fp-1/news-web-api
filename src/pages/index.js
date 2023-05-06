@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import { Container } from "postcss";
+import News from "@/components/News/news";
 
 export default function Pageindonesia() {
   return (
@@ -9,6 +10,7 @@ export default function Pageindonesia() {
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
         <Hero />
+        <News />
       </div>
     </>
   );
