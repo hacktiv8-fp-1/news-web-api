@@ -6,13 +6,13 @@ export default function Detail() {
   return (
     <>
     <Navigation />
-      <div className="max-w-3xl mx-auto my-16">
+      <div className="px-5 sm:px-12 md:max-w-3xl mx-auto my-16">
         <img 
           src="https://s.yimg.com/uu/api/res/1.2/LKRH31mzL9wqtcqoQ_lkjw--~B/Zmk9ZmlsbDtoPTYzMDtweW9mZj0wO3c9MTIwMDthcHBpZD15dGFjaHlvbg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2023-04/835a5670-e5f4-11ed-9db6-3febf57b7a4a.cf.jpg" 
           alt=""
         />
         <div className="relative">
-          <h1 className="text-3xl font-semibold w-4/5 mt-6">
+          <h1 className="text-2xl md:text-3xl font-semibold w-4/5 mt-6">
             The second-gen Apple Pencil drops to $89, plus the rest of the week's best tech deals
           </h1>
           <div className="text-slate-500 flex items-center text-sm mt-3">
