@@ -18,7 +18,7 @@ export default function Navigation({ page, limit }) {
         fetchNewsData(`everything?q=${keyword}&page=${page}&pageSize=${limit}`)
       );
     }
-  }, [keyword, page]);
+  }, [keyword, page, dispatch, limit]);
 
   const handleSearchClick = (e) => {
     e.preventDefault();
