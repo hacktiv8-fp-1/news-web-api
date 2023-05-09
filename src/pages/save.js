@@ -9,7 +9,6 @@ export default function PageFavoriteNews() {
     <>
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
-        <Hero />
         <News data={findAllNews?.bookmarks} />
       </div>
     </>

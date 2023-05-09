@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
+import Link from "next/link";
 
 export default function Navigation({ page, limit }) {
   const [keyword, setKeyword] = useState("");
@@ -28,9 +29,18 @@ export default function Navigation({ page, limit }) {
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <NavLink item="Indonesia" href="/indonesia" />
+        <NavLink item="Indonesia" href="/" />
         <NavLink item="Programming" href="/programming" />
         <NavLink item="Favorites" href="/save" />
+        {/* <Link item="Indonesia" href="/">
+          Indonesia
+        </Link>
+        <Link item="Programming" href="/programming">
+          Programming
+        </Link>
+        <Link item="Favorites" href="/save">
+          Favorites
+        </Link> */}
         <form className="flex gap-3">
           <Input
             type="text"
