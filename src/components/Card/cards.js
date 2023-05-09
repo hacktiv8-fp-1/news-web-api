@@ -1,11 +1,9 @@
-import CardItem from './card-item'
+import CardItem from "./CardItem";
 
 export default function Cards({ className, newsFeed }) {
   return (
     <div className={className}>
-      {newsFeed.map((news) => (
-        <CardItem key={news.source.id} news={news} />
-      ))}
+      <CardItem newsData={newsFeed} />
     </div>
-  )
+  );
 }

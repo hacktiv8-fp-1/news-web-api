@@ -5,6 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite-react/**/*.js",
+    "./node_modules/flowbite/**/*.js",
   ],
   presets: [],
   darkMode: "media", // or 'class'
@@ -1006,4 +1007,5 @@ module.exports = {
     },
   },
   plugins: [require("flowbite/plugin")],
+  // plugins: [require("daisyui")],
 };

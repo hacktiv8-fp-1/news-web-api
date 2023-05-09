@@ -1,32 +1,47 @@
-import React from "react";
+import { fetchNewsData } from "@/redux/slice/news-slice";
 import { Navbar } from "flowbite-react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import Button from "../Button";
+import Input from "../Input";
+import NavLink from "./NavLink";
 
-export default function Navigation() {
+export default function Navigation({ page, limit }) {
+  const [keyword, setKeyword] = useState("");
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (keyword !== "") {
+      dispatch(
+        fetchNewsData(`everything?q=${keyword}&page=${page}&pageSize=${limit}`)
+      );
+    }
+  }, [keyword, page]);
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setKeyword(query);
+  };
   return (
     <Navbar>
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <div className="mx-auto flex md:flex-row flex-col gap-10 items-center">
-          <Link className="dark:text-white" href="/indonesia">
-            Indonesia
-          </Link>
-          <Link className="dark:text-white" href="/programming">
-            Programming
-          </Link>
-          <Link className="dark:text-white" href="/covid19">
-            COVID19
-          </Link>
-          <Link className="dark:text-white" href="/saved">
-            Saved
-          </Link>
-        </div>
-        <input
-          type="text"
-          id="search-navbar"
-          className="block w-full p-2 pl-10 text-sm md:mt-0 mt-4 md:mb-0 mb-1 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search..."></input>
+        <NavLink item="Indonesia" href="/indonesia" />
+        <NavLink item="Programming" href="/programming" />
+        <NavLink item="Favorites" href="/save" />
+        <form className="flex gap-3">
+          <Input
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Button type="submit" onClick={handleSearchClick}>
+            Submit
+          </Button>
+        </form>
       </Navbar.Collapse>
     </Navbar>
   );
