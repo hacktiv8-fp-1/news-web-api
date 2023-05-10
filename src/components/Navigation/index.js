@@ -6,18 +6,16 @@ import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
 
-export default function Navigation({ page, limit }) {
+export default function Navigation() {
   const [keyword, setKeyword] = useState("");
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (keyword !== "") {
-      dispatch(
-        fetchNewsData(`everything?q=${keyword}&page=${page}&pageSize=${limit}`)
-      );
+      dispatch(fetchNewsData(`everything?q=${keyword}&pageSize=${10}`));
     }
-  }, [keyword, page]);
+  }, [keyword, dispatch]);
 
   const handleSearchClick = (e) => {
     e.preventDefault();
@@ -28,9 +26,10 @@ export default function Navigation({ page, limit }) {
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <NavLink item="Indonesia" href="/indonesia" />
+        <NavLink item="Indonesia" href="/" />
         <NavLink item="Programming" href="/programming" />
         <NavLink item="Favorites" href="/save" />
+        <NavLink item="Covid" href="/covid" />
         <form className="flex gap-3">
           <Input
             type="text"

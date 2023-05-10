@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
 import DropDown from "@/components/Dropdown";
@@ -6,19 +6,35 @@ import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
 import Skeleton from "@/components/Skeleton";
+import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
+import Pagination from "@/components/Pagination";
 
 export default function Pageindonesia() {
-  const dispatch = useDispatch();
-  const findAllNews = useSelector((state) => state.news);
-  console.log("findUsers", findAllNews);
   const category = [
     { value: "business" },
     { value: "entertainment" },
     { value: "health" },
   ];
+  const dispatch = useDispatch();
+  const findAllNews = useSelector((state) => state.news);
+  const [filterCategory, setFilterCategory] = useState("");
+
+  const { currentPage, totalPages, limitPage } = useSelector(
+    (state) => state.pagination
+  );
+
+  const handlePageChange = ({ selected }) => {
+    dispatch(setCurrentPage(selected));
+  };
+
+  const url = `top-headlines?country=id&category=${filterCategory}&page=${currentPage}&pageSize=${limitPage}`;
 
   useEffect(() => {
-    dispatch(fetchNewsData(`top-headlines?country=id`));
+    dispatch(fetchNewsData(url));
+  }, [dispatch, url]);
+
+  useEffect(() => {
+    dispatch(setTotalPages(findAllNews?.data.length));
   }, []);
 
   if (findAllNews.status === "loading") {
@@ -32,28 +48,14 @@ export default function Pageindonesia() {
         <Hero />
         <DropDown
           lists={category}
-          onClick={(item) =>
-            dispatch(
-              fetchNewsData(`top-headlines?country=id&category=${item.value}`)
-            )
-          }
+          onClick={(item) => {
+            dispatch(fetchNewsData(url), setFilterCategory(item.value));
+          }}
         />
-        {/* <Dropdown label="Dropdown">
-          {category.map((item, i) => (
-            <Dropdown.Item
-              onClick={() =>
-                dispatch(
-                  fetchNewsData(
-                    `top-headlines?country=id&category=${item.value}`
-                  )
-                )
-              }
-            >
-              {item.value}
-            </Dropdown.Item>
-          ))}
-        </Dropdown> */}
         <News data={findAllNews?.data} />
+        <div className="mt-8">
+          <Pagination handlePageChange={handlePageChange} pages={totalPages} />
+        </div>
       </div>
     </>
   );
