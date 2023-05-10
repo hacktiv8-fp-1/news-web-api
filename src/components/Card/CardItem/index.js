@@ -1,62 +1,77 @@
-import { useState } from "react";
-import { RxDotFilled } from "react-icons/rx";
 import { useDispatch } from "react-redux";
+import { RxDotFilled } from "react-icons/rx";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import Button from "@/components/Button";
 
 export default function CardItem({ newsData }) {
   const dispatch = useDispatch();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { bookmarks } = useSelector((state) => state.bookmark);
 
-  const handleClickFavorites = (item) => {
+  const handleFavoriteClick = (item) => {
+    dispatch(addFavorite(item));
+  }
+
+  const handleUnFavoriteClick = (item) => {
+    dispatch(removeFavorite(item?.url));
+  }
+
+  return newsData.map((news, index) => {
+    const isFavorite = bookmarks.find((bookmark) => bookmark.url === news.url)
+    let button;
+
     if (isFavorite) {
-      dispatch(removeFavorite(item?.url));
-      setIsFavorite((prev) => !prev);
+      button = (
+        <Button
+          className="absolute top-5 right-5 text-2xl"
+          type="button"
+          onClick={() => handleUnFavoriteClick(news)}>
+          <BsBookmarkFill />
+        </Button>
+      );
     } else {
-      dispatch(addFavorite(item));
-      setIsFavorite((prev) => !prev);
+      button = (
+        <Button
+          className="absolute top-5 right-5 text-2xl"
+          type="button"
+          onClick={() => handleFavoriteClick(news)}>
+          <BsBookmark />
+        </Button>
+      );
     }
-  };
 
-  return (
-    <>
-      {newsData.map((news, i) => (
-        <div
-          class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          key={i}
-        >
-          <a href="#">
-            <img
-              class="rounded-t-lg"
-              src={news?.urlToImage}
-              alt={news?.title}
-            />
-          </a>
-          <div class="p-5 relative">
-            <div className="flex items-center mb-5 text-slate-500 text-sm">
-              <span>{news?.author}</span>
-              <RxDotFilled />
-              <span>{convertDate(news?.publishedAt)}</span>
-            </div>
-            <a href="#">
-              <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {news?.title}
-              </h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400">
-              {news?.description}
-            </p>
-            <button className="absolute top-5 right-5 text-2xl">
-              {isFavorite ? (
-                <BsBookmarkFill onClick={() => handleClickFavorites(news)} />
-              ) : (
-                <BsBookmark onClick={() => handleClickFavorites(news)} />
-              )}
-            </button>
+    return (
+      <div
+        class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        key={index}
+      >
+        <Link href={`/detail/${news.url}`}>
+          <img
+            class="rounded-t-lg"
+            src={news?.urlToImage}
+            alt={news?.title}
+          />
+        </Link>
+        <div class="p-5 relative">
+          <div className="flex items-center mb-5 text-slate-500 text-sm">
+            <span>{news?.author}</span>
+            <RxDotFilled />
+            <span>{convertDate(news?.publishedAt)}</span>
           </div>
+          <Link href={`/detail/${news.url}`}>
+            <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {news?.title}
+            </h5>
+          </Link>
+          <p class="mb-3 font-normal text-gray-600 dark:text-gray-400">
+            {news?.description}
+          </p>
+          {button}
         </div>
-      ))}
-    </>
-  );
+      </div>
+    )
+  })
 }

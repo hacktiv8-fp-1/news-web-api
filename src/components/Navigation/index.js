@@ -28,7 +28,7 @@ export default function Navigation({ page, limit }) {
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <NavLink item="Indonesia" href="/indonesia" />
+        <NavLink item="Indonesia" href="/" />
         <NavLink item="Programming" href="/programming" />
         <NavLink item="Favorites" href="/save" />
         <form className="flex gap-3">
@@ -38,7 +38,10 @@ export default function Navigation({ page, limit }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Button type="submit" onClick={handleSearchClick}>
+          <Button
+            className="bg-slate-600"
+            type="submit" 
+            onClick={handleSearchClick}>
             Submit
           </Button>
         </form>
