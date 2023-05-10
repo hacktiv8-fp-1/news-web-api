@@ -6,7 +6,7 @@ export default function News({ data }) {
       <h2 className="text-3xl font-semibold mb-5">News</h2>
       <Cards
         className="grid grid-cols sm:grid-cols-2 lg:grid-cols-4 3xl:grid-cols-5 gap-5 justify-center relative"
-        newsFeed={data}
+        newsData={data}
       />
     </div>
   );
