@@ -4,16 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
+import defaultImage from "../../../assets/default_image.png";
 // import BooMark from "@/components/Bookmark";
 
 function NewsItem({ news }) {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [dataSave, setDataSave] = useState([]);
-  const bookmark = useSelector((state) => state.bookmark.bookmarks);
-  console.log("bookmark", dataSave);
-  console.log("newData", newsData);
-  const handleClickFavorites = (item) => {
+
+  const handleClickFavorites = () => {
     if (isFavorite) {
       dispatch(removeFavorite(news?.url));
       setIsFavorite(false);
@@ -28,7 +26,11 @@ function NewsItem({ news }) {
       <a href="#">
         <img
           className="rounded-t-lg"
-          src={news?.urlToImage}
+          src={
+            news?.urlToImage === null
+              ? "./assets/default_image.png"
+              : news?.urlToImage
+          }
           alt={news?.title}
         />
       </a>

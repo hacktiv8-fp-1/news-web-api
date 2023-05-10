@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
 
 function BookmarkButton(props) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -36,8 +37,7 @@ function BookMark(props) {
       {props.newsData.map((news, i) => (
         <div
           class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          key={i}
-        >
+          key={i}>
           <a href="#">
             <img
               class="rounded-t-lg"

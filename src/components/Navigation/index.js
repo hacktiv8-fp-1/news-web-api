@@ -31,6 +31,7 @@ export default function Navigation({ page, limit }) {
       <Navbar.Collapse>
         <NavLink item="Indonesia" href="/" />
         <NavLink item="Programming" href="/programming" />
+        <NavLink item="COVID-19" href="/covid" />
         <NavLink item="Favorites" href="/save" />
         {/* <Link item="Indonesia" href="/">
           Indonesia
