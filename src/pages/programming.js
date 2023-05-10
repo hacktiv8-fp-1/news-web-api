@@ -21,7 +21,7 @@ export default function Pageindonesia() {
     } else {
       dispatch(fetchNewsData(`everything?q=programming&from=${monthNow}`));
     }
-  }, [dispatch, lastMounth, monthNow]);
+  }, [dispatch, filterMonth]);
 
   return (
     <>
