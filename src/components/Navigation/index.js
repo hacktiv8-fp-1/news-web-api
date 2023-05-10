@@ -25,7 +25,7 @@ export default function Navigation({ page, limit }) {
     setKeyword(query);
   };
   return (
-    <Navbar>
+    <Navbar className="sticky top-0 z-50 drop-shadow-lg">
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>

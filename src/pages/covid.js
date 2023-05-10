@@ -42,11 +42,11 @@ export default function PageCovid() {
         )
       );
     }
-  }, [page, lastMounth, monthNow, limit]);
+  }, [page, dispatch, filterMonth, limit]);
 
   useEffect(() => {
     setPages(findAllNews?.data.length);
-  }, []);
+  }, [findAllNews?.data.length]);
 
   return (
     <>

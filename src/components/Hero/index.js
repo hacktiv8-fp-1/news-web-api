@@ -6,7 +6,7 @@ import McLaren from "../../assets/mclaren.jpg";
 export default function Hero() {
   return (
     <>
-      <div className="flex md:flex-row flex-col items-center gap-5">
+      <div className="flex py-5 md:flex-row flex-col items-center gap-5">
         <Image
           src={McLaren}
           className="rounded-xl"

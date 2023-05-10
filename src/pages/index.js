@@ -19,7 +19,7 @@ export default function Pageindonesia() {
 
   useEffect(() => {
     dispatch(fetchNewsData(`top-headlines?country=id`));
-  }, []);
+  }, [dispatch]);
 
   if (findAllNews.status === "loading") {
     return <Skeleton />;
