@@ -7,7 +7,7 @@ import Hero from "@/components/Hero";
 import News from "@/components/News/news";
 import Dropdown from "@/components/Dropdown";
 
-export default function Pageindonesia() {
+export default function PageProgramming() {
   const dispatch = useDispatch();
   const [filterMonth, setFilterMounth] = useState("");
   const findAllNews = useSelector((state) => state.news);
