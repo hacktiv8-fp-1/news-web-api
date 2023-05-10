@@ -9,7 +9,7 @@ export default function Navigation() {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <div className="mx-auto flex md:flex-row flex-col gap-10 items-center">
-          <Link className="dark:text-white" href="/indonesia">
+          <Link className="dark:text-white" href="/">
             Indonesia
           </Link>
           <Link className="dark:text-white" href="/programming">
