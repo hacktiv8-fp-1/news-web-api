@@ -48,7 +48,7 @@ export default function CardItem({ newsData }) {
         class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         key={index}
       >
-        <Link href={`/detail/${news.url}`}>
+        <Link href={news.url} target="_blank">
           <img
             class="rounded-t-lg"
             src={news?.urlToImage}
@@ -61,7 +61,7 @@ export default function CardItem({ newsData }) {
             <RxDotFilled />
             <span>{convertDate(news?.publishedAt)}</span>
           </div>
-          <Link href={`/detail/${news.url}`}>
+          <Link href={news.url} target="_blank">
             <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {news?.title}
             </h5>
