@@ -10,8 +10,6 @@ const bookmarksSlice = createSlice({
       const existingNew = state.bookmarks.find(
         (news) => news.url === action.payload.url
       );
-      console.log("ex2", existingNew);
-      console.log("ex1", action);
       if (!existingNew) {
         state.bookmarks?.push(action.payload);
       }
@@ -20,7 +18,6 @@ const bookmarksSlice = createSlice({
       const updateFavMovieList = state.bookmarks.filter(
         (news) => news.url !== action.payload
       );
-      console.log("update", updateFavMovieList);
       state.bookmarks = updateFavMovieList;
     },
   },

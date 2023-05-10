@@ -5,7 +5,7 @@ export default function News({ data }) {
     <div className="max-w-screen-2xl m-auto">
       <h2 className="text-3xl font-semibold mb-5">News</h2>
       <Cards
-        className="grid grid-cols sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center"
+        className="grid grid-cols sm:grid-cols-2 lg:grid-cols-4 3xl:grid-cols-5 gap-5 justify-center relative"
         newsFeed={data}
       />
     </div>

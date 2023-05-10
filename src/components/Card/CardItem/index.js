@@ -60,6 +60,7 @@ export default function CardItem({ newsData }) {
             <span className="line-clamp-1 w-1/2">{news?.author}</span>
             <RxDotFilled />
             <span>{convertDate(news?.publishedAt)}</span>
+
           </div>
           <Link href={news.url} target="_blank">
             <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">
