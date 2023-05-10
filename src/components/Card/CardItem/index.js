@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RxDotFilled } from "react-icons/rx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
+// import BooMark from "@/components/Bookmark";
 
 function NewsItem({ news }) {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleClickFavorites = () => {
+  const [dataSave, setDataSave] = useState([]);
+  const bookmark = useSelector((state) => state.bookmark.bookmarks);
+  console.log("bookmark", dataSave);
+  console.log("newData", newsData);
+  const handleClickFavorites = (item) => {
     if (isFavorite) {
       dispatch(removeFavorite(news?.url));
       setIsFavorite(false);
