@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
-import DropDown from "@/components/Dropdown";
 import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
-import Skeleton from "@/components/Skeleton";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
+import TabsFilter from "@/components/TabsFilter";
 
 export default function Pageindonesia() {
   const category = [
@@ -37,17 +36,14 @@ export default function Pageindonesia() {
     dispatch(setTotalPages(findAllNews?.data.length));
   }, []);
 
-  if (findAllNews.status === "loading") {
-    return <Skeleton />;
-  }
-
   return (
     <>
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
         <Hero />
-        <DropDown
+        <TabsFilter
           lists={category}
+          filterCategory={filterCategory}
           onClick={(item) => {
             dispatch(fetchNewsData(url), setFilterCategory(item.value));
           }}

@@ -22,7 +22,7 @@ export default function Navigation() {
     setKeyword(query);
   };
   return (
-    <Navbar>
+    <Navbar className="bg-[#111827]">
       <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
       <Navbar.Toggle />
       <Navbar.Collapse>

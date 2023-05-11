@@ -4,11 +4,10 @@ import { fetchNewsData } from "@/redux/slice/news-slice";
 import { lastMounth, monthNow } from "@/utils/Date";
 import Hero from "@/components/Hero";
 import News from "@/components/News/news";
-import Dropdown from "@/components/Dropdown";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
 import Navigation from "@/components/Navigation";
-import Skeleton from "@/components/Skeleton";
+import TabsFilter from "@/components/TabsFilter";
 
 export default function PageProgramming() {
   const dispatch = useDispatch();
@@ -35,17 +34,14 @@ export default function PageProgramming() {
     dispatch(setTotalPages(findAllNews?.data.length));
   }, []);
 
-  if (findAllNews.status === "loading") {
-    return <Skeleton />;
-  }
-
   return (
     <>
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
         <Hero />
-        <Dropdown
+        <TabsFilter
           lists={category}
+          filterCategory={filterMonth}
           onClick={(item) => {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
