@@ -28,8 +28,8 @@ export default function Navigation() {
       <Navbar.Collapse>
         <NavLink item="Indonesia" href="/" />
         <NavLink item="Programming" href="/programming" />
-        <NavLink item="Favorites" href="/save" />
         <NavLink item="Covid" href="/covid" />
+        <NavLink item="Favorites" href="/favorites" />
         <form className="flex gap-3">
           <Input
             type="text"
