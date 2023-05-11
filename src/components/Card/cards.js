@@ -27,7 +27,7 @@ export default function Cards({ className, newsData }) {
         if (isFavorite) {
           button = (
             <Button
-              className="absolute top-5 right-5 text-2xl"
+              className="absolute top-5 right-5 text-2xl text-[#24a19d]"
               type="button"
               onClick={() => handleUnFavoriteClick(news)}>
               <BsBookmarkFill />
@@ -36,7 +36,7 @@ export default function Cards({ className, newsData }) {
         } else {
           button = (
             <Button
-              className="absolute top-5 right-5 text-2xl"
+              className="absolute top-5 right-5 text-2xl text-[#24a19d]"
               type="button"
               onClick={() => handleFavoriteClick(news)}>
               <BsBookmark />
