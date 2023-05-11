@@ -24,11 +24,10 @@ export default function Navigation() {
     setKeyword(query);
   };
   return (
-    <Navbar className="sticky top-0 z-50 drop-shadow-lg">
+    <Navbar className="sticky top-0 z-50 drop-shadow-lg bg-[#111827]">
       <h1 className="font-medium text-xl dark:text-white">
         <Link href="/">Buletin</Link>
       </h1>
-
       <Navbar.Toggle />
       <Navbar.Collapse>
         <NavLink item="Indonesia" href="/indonesia" />

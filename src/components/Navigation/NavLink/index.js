@@ -5,14 +5,17 @@ import { useRouter } from "next/router";
 export default function NavLink({ item, href }) {
   const router = useRouter();
   return (
-    <div className="mx-auto flex md:flex-row flex-col gap-10 items-center">
+    <div className={`mx-auto flex md:flex-row flex-col gap-10 items-center `}>
+      {/* <Link className={"dark:text-[#24A19C]"} href={href}>
+        {item}
+      </Link> */}
       <Link
+        href={href}
         className={
           router.asPath === href
-            ? "dark:text-white text-black lg:my-0 my-2"
-            : "dark:text-slate-300 text-slate-500 lg:my-0 my-2"
-        }
-        href={href}>
+            ? "text-[#24A19C] lg:my-0 my-2"
+            : "dark:text-[#BFCFD4] text-slate-600 lg:my-0 my-2"
+        }>
         {item}
       </Link>
     </div>

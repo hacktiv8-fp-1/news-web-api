@@ -10,7 +10,6 @@ export default function PageFavoriteNews() {
     <>
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
-        <Hero />
         <div className="max-w-screen-2xl m-auto">
           <h2 className="text-3xl font-semibold mb-5">News</h2>
           <CardsSave

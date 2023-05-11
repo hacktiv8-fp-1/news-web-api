@@ -7,7 +7,7 @@ export default function Button({ type, onClick, children }) {
     // </button>
     <button
       type={type}
-      className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium text-md rounded-lg px-5 py-2.5 mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+      className="bg-[#24A19C] border border-gray-300 focus:outline-none hover:bg-[#46b1ad] focus:ring-4 focus:ring-gray-200 font-medium text-md rounded-lg px-5 py-2.5 mr-2 text-white dark:border-gray-600  dark:hover:border-gray-600 dark:focus:ring-gray-700"
       onClick={onClick}>
       {children}
     </button>

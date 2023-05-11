@@ -54,11 +54,20 @@ function NewsItem({ news, index }) {
         </p>
         <div className="absolute top-5 right-5 text-2xl cursor-pointer">
           {filterByTitle ? (
-            <BsBookmarkFill onClick={handleClickFavorites} />
+            <BsBookmarkFill
+              className="text-[#24A19C]"
+              onClick={handleClickFavorites}
+            />
           ) : isFavorite ? (
-            <BsBookmarkFill onClick={handleClickFavorites} />
+            <BsBookmarkFill
+              className="text-[#24A19C]"
+              onClick={handleClickFavorites}
+            />
           ) : (
-            <BsBookmark onClick={handleClickFavorites} />
+            <BsBookmark
+              className="text-[#24A19C]"
+              onClick={handleClickFavorites}
+            />
           )}
         </div>
       </div>

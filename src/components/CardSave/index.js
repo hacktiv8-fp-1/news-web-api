@@ -41,7 +41,10 @@ export default function CardsSave({ className, newsData }) {
             <div
               className="absolute top-5 right-5 text-2xl cursor-pointer"
               key={i}>
-              <BsBookmarkFill onClick={() => handleRemoveFavorite(news)} />
+              <BsBookmarkFill
+                className="text-[#24A19C]"
+                onClick={() => handleRemoveFavorite(news)}
+              />
             </div>
           </div>
         </div>
