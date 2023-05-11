@@ -11,8 +11,8 @@ export default function PageFavoriteNews() {
       <div className="w-10/12 py-10 mx-auto">
         <Hero />
         <div className="max-w-screen-2xl m-auto">
-          <h2 className="text-3xl font-semibold mb-5">News</h2>
-          <News 
+          <News
+            title="Favorites News"
             className="grid grid-cols sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center"
             data={findAllNews?.bookmarks}
           />

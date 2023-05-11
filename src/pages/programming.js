@@ -50,7 +50,7 @@ export default function PageProgramming() {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Programming News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>
