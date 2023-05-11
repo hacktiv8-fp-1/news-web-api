@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
-import { lastMounth, monthNow } from "@/utils/Date";
+import TabsFilter from "@/components/TabsFilter";
+import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
-import Navigation from "@/components/Navigation";
-import TabsFilter from "@/components/TabsFilter";
 import Head from "next/head";
 
-export default function PageProgramming() {
+export default function Pageindonesia() {
+  const category = [
+    { value: "Business" },
+    { value: "Entertainment" },
+    { value: "Health" },
+  ];
   const dispatch = useDispatch();
-  const [filterMonth, setFilterMounth] = useState(monthNow);
-
   const findAllNews = useSelector((state) => state.news);
+  const [filterCategory, setFilterCategory] = useState("");
+
   const { currentPage, totalPages, limitPage } = useSelector(
     (state) => state.pagination
   );
@@ -22,12 +26,11 @@ export default function PageProgramming() {
     dispatch(setCurrentPage(selected + 1));
   };
 
-  const category = [{ value: monthNow }, { value: lastMounth }];
-  const url = `everything?q=programming&from=${filterMonth}&page=${currentPage}&pageSize=${limitPage}`;
+  const url = `top-headlines?country=id&category=${filterCategory}&page=${currentPage}&pageSize=${limitPage}`;
 
   useEffect(() => {
     dispatch(fetchNewsData(url));
-  }, [filterMonth, dispatch, currentPage, url]);
+  }, [dispatch, url]);
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
@@ -37,18 +40,18 @@ export default function PageProgramming() {
   return (
     <>
       <Head>
-        <title>Buletin | Programming</title>
+        <title>Buletin | Indonesia</title>
       </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
           lists={category}
-          filterCategory={filterMonth}
+          filterCategory={filterCategory}
           onClick={(item) => {
-            dispatch(fetchNewsData(url)), setFilterMounth(item.value);
+            dispatch(fetchNewsData(url)), setFilterCategory(item.value);
           }}
         />
-        <News title="Programming News" data={findAllNews?.data} />
+        <News data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>

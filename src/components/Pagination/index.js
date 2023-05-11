@@ -5,8 +5,8 @@ export default function Pagination({ handlePageChange, pages }) {
   return (
     <div className="mt-8">
       <ReactPaginate
-        previousLabel={"< Prev"}
-        nextLabel={"Next >"}
+        previousLabel={"<"}
+        nextLabel={">"}
         breakLabel={<span className="mx-2">...</span>}
         onPageChange={handlePageChange}
         pageCount={Math.min(10, pages)}

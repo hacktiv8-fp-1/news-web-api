@@ -10,11 +10,10 @@ export default function SkeletonCard() {
           .fill()
           .map((_, i) => (
             <div
-              class="max-w-sm border border-gray-200 rounded-lg shadow bg-gray-200 animate-pulse"
-              key={i}
-            >
+              className="max-w-sm border border-gray-200 rounded-lg shadow bg-gray-200 animate-pulse"
+              key={i}>
               <div className="h-44 bg-gray-300 w-full rounded-t-lg"></div>
-              <div class="p-5 relative">
+              <div className="p-5 relative">
                 <div className="flex items-center mb-5">
                   <div className="w-[80px] h-[15px] bg-gray-300 rounded-lg"></div>
                   <span className="pr-3" />

@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 .pagination {
-  @apply list-none flex justify-center items-center mb-20 text-[1.2rem] gap-[5px];
+  @apply list-none flex justify-center items-center mb-20 text-[1.2rem] gap-[5px] dark:text-slate-200;
 }
 
 .pagination .page-num {
@@ -13,9 +13,9 @@
 
 .pagination .page-num:hover {
   color: #fff;
-  @apply bg-blue-500;
+  @apply bg-[#24A19C];
 }
 
 .pagination .active {
-  @apply bg-blue-500;
+  @apply bg-[#24A19C] text-white;
 }

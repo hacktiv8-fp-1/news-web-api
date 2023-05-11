@@ -5,25 +5,25 @@ import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import CardItem from "./CardItem";
 import Button from "@/components/Button";
 
-
 export default function Cards({ className, newsData }) {
   const dispatch = useDispatch();
   const { bookmarks } = useSelector((state) => state.bookmark);
 
   const handleFavoriteClick = (item) => {
     dispatch(addFavorite(item));
-  }
+  };
 
   const handleUnFavoriteClick = (item) => {
     dispatch(removeFavorite(item?.url));
-  }
+  };
 
   return (
     <div className={className}>
       {newsData.map((news, index) => {
-        const isFavorite = bookmarks.find((bookmark) => bookmark.url === news.url)
+        const isFavorite = bookmarks.find(
+          (bookmark) => bookmark.url === news.url
+        );
         let button;
-
         if (isFavorite) {
           button = (
             <Button
@@ -44,13 +44,7 @@ export default function Cards({ className, newsData }) {
           );
         }
 
-        return (
-          <CardItem 
-            news={news} 
-            button={button}
-            key={index}
-          />
-        )
+        return <CardItem news={news} button={button} key={index} />;
       })}
     </div>
   );

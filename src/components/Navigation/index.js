@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
+import Link from "next/link";
+import { BsSearch } from "react-icons/bs";
 
 export default function Navigation() {
   const [keyword, setKeyword] = useState("");
@@ -22,26 +24,25 @@ export default function Navigation() {
     setKeyword(query);
   };
   return (
-    <Navbar className="bg-[#111827]">
-      <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
+    <Navbar className="sticky top-0 z-50 drop-shadow-md bg-[#111827] dark:bg-[#111827]">
+      <h1 className="font-semibold text-xl text-[#24a19c]">
+        <Link href="/">Buletin</Link>
+      </h1>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <NavLink item="Indonesia" href="/" />
+        <NavLink item="Indonesia" href="/indonesia" />
         <NavLink item="Programming" href="/programming" />
-        <NavLink item="Covid" href="/covid" />
+        <NavLink item="COVID-19" href="/covid" />
         <NavLink item="Favorites" href="/favorites" />
-        <form className="flex gap-3">
+        <form className="flex justify-center items-center my-1 gap-3">
           <Input
             type="text"
             placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Button
-            className="bg-slate-600"
-            type="submit" 
-            onClick={handleSearchClick}>
-            Submit
+          <Button type="submit" onClick={handleSearchClick}>
+            <BsSearch />
           </Button>
         </form>
       </Navbar.Collapse>

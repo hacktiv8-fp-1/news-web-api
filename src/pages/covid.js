@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
 import { lastMounth, monthNow } from "@/utils/Date";
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
 import News from "@/components/News/news";
 import Pagination from "@/components/Pagination";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import TabsFilter from "@/components/TabsFilter";
+import Head from "next/head";
 
 export default function PageCovid() {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function PageCovid() {
   );
 
   const handlePageChange = ({ selected }) => {
-    dispatch(setCurrentPage(selected));
+    dispatch(setCurrentPage(selected + 1));
   };
 
   const category = [{ value: monthNow }, { value: lastMounth }];
@@ -27,17 +27,20 @@ export default function PageCovid() {
 
   useEffect(() => {
     dispatch(fetchNewsData(url));
-  }, [filterMonth, dispatch, currentPage]);
+  }, [filterMonth, dispatch, currentPage, url]);
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <>
+      <Head>
+        <title>Buletin | COVID-19</title>
+      </Head>
       <Navigation />
-      <div className="w-10/12 py-10 mx-auto">
-        <Hero />
+      <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
           lists={category}
           filterCategory={filterMonth}
