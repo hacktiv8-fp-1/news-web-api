@@ -4,25 +4,7 @@ import newsReducer from "@/redux/slice/news-slice";
 import bookmarksReducer from "@/redux/slice/save-slice";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-
-// const createNoopStorage = () => {
-//   return {
-//     getItem(_key) {
-//       return Promise.resolve(null);
-//     },
-//     setItem(_key, value) {
-//       return Promise.resolve(value);
-//     },
-//     removeltem(_key) {
-//       return Promise.resolve();
-//     },
-//   };
-// };
-
-// const storage =
-//   typeof window !== "undefined"
-//     ? createwebStorage("local")
-//     : createNoopStorage();
+import paginateReducer from "../slice/paginate-slice";
 
 const persistConfig = {
   key: "root",
@@ -33,6 +15,7 @@ const persistConfig = {
 const rootReducers = combineReducers({
   news: newsReducer,
   bookmark: bookmarksReducer,
+  pagination: paginateReducer,
 });
 
 const persist = persistReducer(persistConfig, rootReducers);

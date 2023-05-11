@@ -7,7 +7,7 @@ export default function CardItem({ news, button }) {
     <div
       class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
-      <Link href={news.url} target="_blank">
+      <Link href={`/detail/${news.title}`}>
         <img
           class="rounded-t-lg max-h-44 w-full object-cover"
           src={news?.urlToImage}
@@ -26,7 +26,7 @@ export default function CardItem({ news, button }) {
             {news?.title}
           </h5>
         </Link>
-        <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 line-clamp-5">
+        <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 line-clamp-3">
           {news?.description}
         </p>
         {button}
