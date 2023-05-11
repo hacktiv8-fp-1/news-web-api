@@ -9,8 +9,8 @@ export default function NavLink({ item, href }) {
       <Link
         className={
           router.asPath === href
-            ? "dark:text-white text-black"
-            : "dark:text-slate-300 text-slate-500"
+            ? "dark:text-white text-black lg:my-0 my-2"
+            : "dark:text-slate-300 text-slate-500 lg:my-0 my-2"
         }
         href={href}>
         {item}

@@ -5,19 +5,19 @@ import { useDispatch } from "react-redux";
 import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
+import Link from "next/link";
+import { BsSearch } from "react-icons/bs";
 
-export default function Navigation({ page, limit }) {
+export default function Navigation() {
   const [keyword, setKeyword] = useState("");
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (keyword !== "") {
-      dispatch(
-        fetchNewsData(`everything?q=${keyword}&page=${page}&pageSize=${limit}`)
-      );
+      dispatch(fetchNewsData(`everything?q=${keyword}&pageSize=${10}`));
     }
-  }, [keyword, page, dispatch, limit]);
+  }, [keyword, dispatch]);
 
   const handleSearchClick = (e) => {
     e.preventDefault();
@@ -25,23 +25,17 @@ export default function Navigation({ page, limit }) {
   };
   return (
     <Navbar className="sticky top-0 z-50 drop-shadow-lg">
-      <h1 className="font-medium text-xl dark:text-white">Buletin</h1>
+      <h1 className="font-medium text-xl dark:text-white">
+        <Link href="/">Buletin</Link>
+      </h1>
+
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <NavLink item="Indonesia" href="/" />
+        <NavLink item="Indonesia" href="/indonesia" />
         <NavLink item="Programming" href="/programming" />
         <NavLink item="COVID-19" href="/covid" />
         <NavLink item="Favorites" href="/save" />
-        {/* <Link item="Indonesia" href="/">
-          Indonesia
-        </Link>
-        <Link item="Programming" href="/programming">
-          Programming
-        </Link>
-        <Link item="Favorites" href="/save">
-          Favorites
-        </Link> */}
-        <form className="flex gap-3">
+        <form className="flex justify-center items-center my-1 gap-3">
           <Input
             type="text"
             placeholder="Search..."
@@ -49,7 +43,7 @@ export default function Navigation({ page, limit }) {
             onChange={(e) => setQuery(e.target.value)}
           />
           <Button type="submit" onClick={handleSearchClick}>
-            Submit
+            <BsSearch />
           </Button>
         </form>
       </Navbar.Collapse>

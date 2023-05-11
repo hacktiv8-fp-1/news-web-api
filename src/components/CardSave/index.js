@@ -1,15 +1,11 @@
 import { addFavorite, removeFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
-import { useState } from "react";
 import { BsBookmarkFill } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function CardsSave({ className, newsData }) {
   const dispatch = useDispatch();
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [dataSave, setDataSave] = useState([]);
-  const bookmark = useSelector((state) => state.bookmark);
 
   const handleRemoveFavorite = (item) => {
     dispatch(removeFavorite(item?.url));
@@ -42,13 +38,6 @@ export default function CardsSave({ className, newsData }) {
             <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">
               {news?.description}
             </p>
-            {/* {news.url === dataSave.url ? (
-              <BsBookmarkFill onClick={() => handleClickFavorites(news)} />
-            ) : isFavorite ? (
-              <BsBookmark onClick={() => handleClickFavorites(news)} />
-            ) : (
-              <BsBookmarkFill onClick={() => handleClickFavorites(news)} />
-            )} */}
             <div
               className="absolute top-5 right-5 text-2xl cursor-pointer"
               key={i}>

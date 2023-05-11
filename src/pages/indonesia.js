@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
-import { lastMounth, monthNow } from "@/utils/Date";
-import Hero from "@/components/Hero";
+import DropDown from "@/components/Dropdown";
+import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
-import Dropdown from "@/components/Dropdown";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
-import Navigation from "@/components/Navigation";
 import Skeleton from "@/components/Skeleton";
 
 export default function Pageindonesia() {
+  const category = [
+    { value: "business" },
+    { value: "entertainment" },
+    { value: "health" },
+  ];
   const dispatch = useDispatch();
-  const [filterMonth, setFilterMounth] = useState(monthNow);
-
   const findAllNews = useSelector((state) => state.news);
+  const [filterCategory, setFilterCategory] = useState("");
 
   const { currentPage, totalPages, limitPage } = useSelector(
     (state) => state.pagination
@@ -24,12 +26,11 @@ export default function Pageindonesia() {
     dispatch(setCurrentPage(selected));
   };
 
-  const category = [{ value: monthNow }, { value: lastMounth }];
-  const url = `everything?q=programming&from=${filterMonth}&page=${currentPage}&pageSize=${limitPage}`;
+  const url = `top-headlines?country=id&category=${filterCategory}&page=${currentPage}&pageSize=${limitPage}`;
 
   useEffect(() => {
     dispatch(fetchNewsData(url));
-  }, [filterMonth, dispatch, currentPage, url]);
+  }, [dispatch, url]);
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
@@ -43,10 +44,10 @@ export default function Pageindonesia() {
     <>
       <Navigation />
       <div className="w-10/12 py-10 mx-auto">
-        <Dropdown
+        <DropDown
           lists={category}
           onClick={(item) => {
-            dispatch(fetchNewsData(url)), setFilterMounth(item.value);
+            dispatch(fetchNewsData(url), setFilterCategory(item.value));
           }}
         />
         <News data={findAllNews?.data} />
