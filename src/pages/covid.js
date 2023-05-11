@@ -45,7 +45,7 @@ export default function PageCovid() {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Covid-19 News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>

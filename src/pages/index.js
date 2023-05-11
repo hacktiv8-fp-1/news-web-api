@@ -48,7 +48,7 @@ export default function Pageindonesia() {
             dispatch(fetchNewsData(url), setFilterCategory(item.value));
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Indonesian News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>

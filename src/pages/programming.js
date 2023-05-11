@@ -9,7 +9,7 @@ import Pagination from "@/components/Pagination";
 import Navigation from "@/components/Navigation";
 import TabsFilter from "@/components/TabsFilter";
 
-export default function Pageindonesia() {
+export default function PageProgramming() {
   const dispatch = useDispatch();
   const [filterMonth, setFilterMounth] = useState(monthNow);
 
@@ -46,7 +46,7 @@ export default function Pageindonesia() {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Programming News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>
