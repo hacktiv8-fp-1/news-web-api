@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
-import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
+import Head from "next/head";
 
 export default function PageFavoriteNews() {
   const findAllNews = useSelector((state) => state.bookmark);
   return (
     <>
+      <Head>
+        <title>Buletin | Favorites</title>
+      </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
         <div className="max-w-screen-2xl m-auto">

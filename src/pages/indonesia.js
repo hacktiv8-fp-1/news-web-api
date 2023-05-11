@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import News from "@/components/News/news";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
+import Head from "next/head";
 
 export default function Pageindonesia() {
   const category = [
@@ -38,6 +39,9 @@ export default function Pageindonesia() {
 
   return (
     <>
+      <Head>
+        <title>Buletin | Indonesia</title>
+      </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
         <TabsFilter

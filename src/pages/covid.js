@@ -7,6 +7,7 @@ import News from "@/components/News/news";
 import Pagination from "@/components/Pagination";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import TabsFilter from "@/components/TabsFilter";
+import Head from "next/head";
 
 export default function PageCovid() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ export default function PageCovid() {
 
   return (
     <>
+      <Head>
+        <title>Buletin | COVID-19</title>
+      </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
         <TabsFilter

@@ -7,6 +7,7 @@ import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
 import Pagination from "@/components/Pagination";
 import Navigation from "@/components/Navigation";
 import TabsFilter from "@/components/TabsFilter";
+import Head from "next/head";
 
 export default function PageProgramming() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ export default function PageProgramming() {
 
   return (
     <>
+      <Head>
+        <title>Buletin | Programming</title>
+      </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
