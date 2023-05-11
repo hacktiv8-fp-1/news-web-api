@@ -1,7 +1,7 @@
 import React from "react";
 import Content from "./Content/content";
 import Image from "next/image";
-import McLaren from "../../assets/mclaren.jpg";
+import McLaren from "../../../public/assets/mclaren.jpg";
 
 export default function Hero() {
   return (

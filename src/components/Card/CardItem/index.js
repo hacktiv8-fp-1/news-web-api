@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
-import defaultImage from "../../../assets/default_image.png";
 // import BooMark from "@/components/Bookmark";
 
 function NewsItem({ news }) {

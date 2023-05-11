@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
-import Link from "next/link";
 
 export default function Navigation({ page, limit }) {
   const [keyword, setKeyword] = useState("");
