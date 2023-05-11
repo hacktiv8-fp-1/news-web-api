@@ -9,9 +9,9 @@ import Pagination from "@/components/Pagination";
 
 export default function Pageindonesia() {
   const category = [
-    { value: "business" },
-    { value: "entertainment" },
-    { value: "health" },
+    { value: "Business" },
+    { value: "Entertainment" },
+    { value: "Health" },
   ];
   const dispatch = useDispatch();
   const findAllNews = useSelector((state) => state.news);
@@ -22,7 +22,7 @@ export default function Pageindonesia() {
   );
 
   const handlePageChange = ({ selected }) => {
-    dispatch(setCurrentPage(selected));
+    dispatch(setCurrentPage(selected + 1));
   };
 
   const url = `top-headlines?country=id&category=${filterCategory}&page=${currentPage}&pageSize=${limitPage}`;
@@ -33,12 +33,13 @@ export default function Pageindonesia() {
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
-  }, [dispatch, findAllNews?.data.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <>
       <Navigation />
-      <div className="w-10/12 py-10 mx-auto">
+      <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
           lists={category}
           filterCategory={filterCategory}

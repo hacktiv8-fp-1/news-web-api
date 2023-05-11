@@ -21,7 +21,7 @@ const newsSlice = createSlice({
     builder.addCase(fetchNewsData.fulfilled, (state, action) => {
       return {
         ...state,
-        status: "sucess",
+        status: "success",
         data: action.payload.articles,
       };
     });

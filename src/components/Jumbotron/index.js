@@ -4,7 +4,7 @@ const Jumbotron = () => {
   return (
     <section>
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-[#24A19C] md:text-5xl lg:text-6xl dark:text-[#9cd1cf]">
           Selamat datang di Buletin
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">
@@ -14,7 +14,7 @@ const Jumbotron = () => {
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <Link
             href="/indonesia"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white dark:text-slate-800 rounded-lg bg-[#24A19C] hover:bg-[#2ec7c2] dark:bg-[#9cd1cf] focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
             Cari Berita Indonesia
             <svg
               aria-hidden="true"

@@ -13,9 +13,9 @@
 
 .pagination .page-num:hover {
   color: #fff;
-  @apply bg-blue-500;
+  @apply bg-[#24A19C];
 }
 
 .pagination .active {
-  @apply bg-blue-500;
+  @apply bg-[#24A19C] text-white;
 }

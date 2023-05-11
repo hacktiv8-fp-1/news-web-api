@@ -8,18 +8,17 @@ import Pagination from "@/components/Pagination";
 import Navigation from "@/components/Navigation";
 import TabsFilter from "@/components/TabsFilter";
 
-export default function Pageindonesia() {
+export default function PageProgramming() {
   const dispatch = useDispatch();
   const [filterMonth, setFilterMounth] = useState(monthNow);
 
   const findAllNews = useSelector((state) => state.news);
-
   const { currentPage, totalPages, limitPage } = useSelector(
     (state) => state.pagination
   );
 
   const handlePageChange = ({ selected }) => {
-    dispatch(setCurrentPage(selected));
+    dispatch(setCurrentPage(selected + 1));
   };
 
   const category = [{ value: monthNow }, { value: lastMounth }];
@@ -31,12 +30,13 @@ export default function Pageindonesia() {
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
-  }, [dispatch, findAllNews?.data.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <>
       <Navigation />
-      <div className="w-10/12 py-10 mx-auto">
+      <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
           lists={category}
           filterCategory={filterMonth}
@@ -44,7 +44,7 @@ export default function Pageindonesia() {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Programming News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>

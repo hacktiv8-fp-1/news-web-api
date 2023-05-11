@@ -1,35 +1,13 @@
-import { useState } from "react";
 import { RxDotFilled } from "react-icons/rx";
-import { useDispatch, useSelector } from "react-redux";
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { removeFavorite, addFavorite } from "@/redux/slice/save-slice";
 import { convertDate } from "@/utils/Date";
+import Link from "next/link";
 
-function NewsItem({ news, index }) {
-  const dispatch = useDispatch();
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const bookmark = useSelector((state) => state.bookmark.bookmarks);
-  const filterByTitle = bookmark.find((el) => el.title === news.title);
-
-  const handleClickFavorites = () => {
-    if (filterByTitle) {
-      dispatch(removeFavorite(news?.url));
-      setIsFavorite(false);
-    } else if (isFavorite) {
-      dispatch(removeFavorite(news?.url));
-      setIsFavorite(false);
-    } else {
-      dispatch(addFavorite(news));
-      setIsFavorite(true);
-    }
-  };
-
+export default function CardItem({ news, button }) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
+    <div className="max-w-sm flex flex-col justify-between bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <Link href={news.url} target="_blank" rel="noreferrer">
         <img
-          className="rounded-t-lg"
+          className="rounded-t-lg max-h-44 w-screen object-cover"
           src={
             news?.urlToImage === null
               ? "./assets/default_image.png"
@@ -37,50 +15,23 @@ function NewsItem({ news, index }) {
           }
           alt={news?.title}
         />
-      </a>
+      </Link>
       <div className="p-5 relative">
-        <div className="flex items-center mb-5 text-slate-500 text-sm">
-          <span>{news?.author}</span>
+        <div className="flex items-center mb-5 text-[#617784] text-sm w-11/12">
+          <span className="line-clamp-1">{news?.author}</span>
           <RxDotFilled />
-          <span>{convertDate(news?.publishedAt)}</span>
+          <span className="line-clamp-1">{convertDate(news?.publishedAt)}</span>
         </div>
-        <a href="#">
-          <h5 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <Link href={news.url} target="_blank" rel="noreferrer">
+          <h5 className="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">
             {news?.title}
           </h5>
-        </a>
-        <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">
+        </Link>
+        <p className="mb-3 font-normal text-[#617784] dark:text-gray-400 line-clamp-2">
           {news?.description}
         </p>
-        <div className="absolute top-5 right-5 text-2xl cursor-pointer">
-          {filterByTitle ? (
-            <BsBookmarkFill
-              className="text-[#24A19C]"
-              onClick={handleClickFavorites}
-            />
-          ) : isFavorite ? (
-            <BsBookmarkFill
-              className="text-[#24A19C]"
-              onClick={handleClickFavorites}
-            />
-          ) : (
-            <BsBookmark
-              className="text-[#24A19C]"
-              onClick={handleClickFavorites}
-            />
-          )}
-        </div>
+        {button}
       </div>
     </div>
-  );
-}
-
-export default function CardItem({ newsData }) {
-  return (
-    <>
-      {newsData.map((news, i) => (
-        <NewsItem key={i} news={news} index={i} />
-      ))}
-    </>
   );
 }

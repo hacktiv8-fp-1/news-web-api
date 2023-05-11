@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNewsData } from "@/redux/slice/news-slice";
 import { lastMounth, monthNow } from "@/utils/Date";
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
 import News from "@/components/News/news";
 import Pagination from "@/components/Pagination";
 import { setCurrentPage, setTotalPages } from "@/redux/slice/paginate-slice";
@@ -19,7 +18,7 @@ export default function PageCovid() {
   );
 
   const handlePageChange = ({ selected }) => {
-    dispatch(setCurrentPage(selected));
+    dispatch(setCurrentPage(selected + 1));
   };
 
   const category = [{ value: monthNow }, { value: lastMounth }];
@@ -31,12 +30,13 @@ export default function PageCovid() {
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
-  }, [dispatch, findAllNews?.data.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <>
       <Navigation />
-      <div className="w-10/12 py-10 mx-auto">
+      <div className="w-9/12 py-10 mx-auto">
         <TabsFilter
           lists={category}
           filterCategory={filterMonth}
@@ -44,7 +44,7 @@ export default function PageCovid() {
             dispatch(fetchNewsData(url)), setFilterMounth(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Covid-19 News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>

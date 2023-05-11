@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <div className="w-10/12 my-auto py-10 mx-auto">
+      <div className="w-9/12 my-auto py-10 mx-auto">
         <Jumbotron />
       </div>
     </>

@@ -24,8 +24,8 @@ export default function Navigation() {
     setKeyword(query);
   };
   return (
-    <Navbar className="sticky top-0 z-50 drop-shadow-lg bg-[#111827]">
-      <h1 className="font-medium text-xl dark:text-white">
+    <Navbar className="sticky top-0 z-50 drop-shadow-md bg-[#111827] dark:bg-[#111827]">
+      <h1 className="font-semibold text-xl text-[#24a19c]">
         <Link href="/">Buletin</Link>
       </h1>
       <Navbar.Toggle />
@@ -33,7 +33,7 @@ export default function Navigation() {
         <NavLink item="Indonesia" href="/indonesia" />
         <NavLink item="Programming" href="/programming" />
         <NavLink item="COVID-19" href="/covid" />
-        <NavLink item="Favorites" href="/save" />
+        <NavLink item="Favorites" href="/favorites" />
         <form className="flex justify-center items-center my-1 gap-3">
           <Input
             type="text"
