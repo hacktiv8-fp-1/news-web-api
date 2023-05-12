@@ -2,6 +2,7 @@ import { fetchNewsData } from "@/redux/slice/news-slice";
 import { Navbar } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import Button from "../Button";
 import Input from "../Input";
 import NavLink from "./NavLink";
@@ -13,9 +14,21 @@ export default function Navigation() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
+  const router = useRouter();
+  const path = router.pathname;
+
   useEffect(() => {
     if (keyword !== "") {
-      dispatch(fetchNewsData(`everything?q=${keyword}&pageSize=${10}`));
+      if (path === "/indonesia") {
+        dispatch(
+          fetchNewsData(`top-headlines?country=id&q=${keyword}&pageSize=${10}`)
+        );
+      } else {
+        dispatch(fetchNewsData(`everything?q=${keyword}&pageSize=${10}`));
+        router.replace({
+          pathname: `/search/${keyword}`,
+        });
+      }
     }
   }, [keyword, dispatch]);
 
