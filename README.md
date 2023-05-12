@@ -1,3 +1,22 @@
+# Buletin - News Web Portal
+Sebuah web berita yang data nya bersumber dari REST API
+A web portal built with [News API](https://newsapi.org)
+
+## (https://github.githubassets.com/images/icons/emoji/unicode/1f465.png) Project Members
+1. Bilal Al Ghiffari
+2. Eki Alfani
+3. Dimas Bayu Pratama
+
+## (https://github.githubassets.com/images/icons/emoji/unicode/1f680.png) Tech Used
+1. Next.js (React.js Framework)
+2. Tailwind (CSS Framework)
+3. Flowbite (Tailwind UI component)
+4. Redux Toolkit (Redux Development Toolset)
+5. Redux Persist (Redix Middleware)
+6. PostCSS (CSS plugin)
+7. Axios (Promise based HTTP client)
+8. Moment (Date Formatter)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
