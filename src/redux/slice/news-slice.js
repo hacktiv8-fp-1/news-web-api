@@ -10,6 +10,7 @@ const newsSlice = createSlice({
   name: "news",
   initialState: {
     status: "idle",
+    loading: "false",
     data: [],
     error: null,
   },
@@ -17,17 +18,20 @@ const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchNewsData.pending, (state) => {
       state.status = "loading";
+      state.loading = true;
     });
     builder.addCase(fetchNewsData.fulfilled, (state, action) => {
       return {
         ...state,
         status: "success",
+        loading: "false",
         data: action.payload.articles,
       };
     });
     builder.addCase(fetchNewsData.rejected, (state, action) => {
       state.status = "error";
       state.error = action.error.message;
+      state.loading = false;
     });
   },
 });

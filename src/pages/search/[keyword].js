@@ -28,7 +28,7 @@ export default function Search() {
         `everything?q=${keyword}&page=${currentPage}&pageSize=${limitPage}`
       )
     );
-  }, [keyword, currentPage]);
+  }, [keyword, currentPage, dispatch, limitPage]);
 
   useEffect(() => {
     dispatch(setTotalPages(findAllNews?.data.length));
@@ -41,7 +41,7 @@ export default function Search() {
       </Head>
       <Navigation />
       <div className="w-9/12 py-10 mx-auto">
-        <News title={keyword} data={findAllNews?.data} />
+        <News title={`News terkait ${keyword}`} data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>
