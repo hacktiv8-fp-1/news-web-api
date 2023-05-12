@@ -2,12 +2,12 @@
 Sebuah web berita yang data nya bersumber dari REST API
 A web portal built with [News API](https://newsapi.org)
 
-## (https://github.githubassets.com/images/icons/emoji/unicode/1f465.png) Project Members
+## ![logo](https://github.githubassets.com/images/icons/emoji/unicode/1f465.png) Project Members
 1. Bilal Al Ghiffari
 2. Eki Alfani
 3. Dimas Bayu Pratama
 
-## (https://github.githubassets.com/images/icons/emoji/unicode/1f680.png) Tech Used
+## ![logo](https://github.githubassets.com/images/icons/emoji/unicode/1f680.png) Tech Used
 1. Next.js (React.js Framework)
 2. Tailwind (CSS Framework)
 3. Flowbite (Tailwind UI component)
