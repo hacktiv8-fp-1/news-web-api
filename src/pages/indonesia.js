@@ -17,15 +17,12 @@ export default function Pageindonesia() {
   const dispatch = useDispatch();
   const findAllNews = useSelector((state) => state.news);
   const [filterCategory, setFilterCategory] = useState("");
-
   const { currentPage, totalPages, limitPage } = useSelector(
     (state) => state.pagination
   );
-
   const handlePageChange = ({ selected }) => {
     dispatch(setCurrentPage(selected + 1));
   };
-
   const url = `top-headlines?country=id&category=${filterCategory}&page=${currentPage}&pageSize=${limitPage}`;
 
   useEffect(() => {
@@ -36,7 +33,6 @@ export default function Pageindonesia() {
     dispatch(setTotalPages(findAllNews?.data.length));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
-
   return (
     <>
       <Head>
@@ -51,7 +47,7 @@ export default function Pageindonesia() {
             dispatch(fetchNewsData(url)), setFilterCategory(item.value);
           }}
         />
-        <News data={findAllNews?.data} />
+        <News title="Indonesian News" data={findAllNews?.data} />
         <div className="mt-8">
           <Pagination handlePageChange={handlePageChange} pages={totalPages} />
         </div>
