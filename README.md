@@ -1,5 +1,4 @@
 # Buletin - News Web Portal
-Sebuah web berita yang data nya bersumber dari REST API
 A web portal built with [News API](https://newsapi.org)
 
 ## ![logo](https://github.githubassets.com/images/icons/emoji/unicode/1f465.png) Project Members
@@ -12,7 +11,7 @@ A web portal built with [News API](https://newsapi.org)
 2. Tailwind (CSS Framework)
 3. Flowbite (Tailwind UI component)
 4. Redux Toolkit (Redux Development Toolset)
-5. Redux Persist (Redix Middleware)
+5. Redux Persist (Redux Middleware)
 6. PostCSS (CSS plugin)
 7. Axios (Promise based HTTP client)
 8. Moment (Date Formatter)
